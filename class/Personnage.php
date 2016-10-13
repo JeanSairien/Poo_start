@@ -51,7 +51,7 @@ class Personnage
 		public function frapper($jerry){ 
 
 			$this->_degats += $this->force; 
-			echo '<div class="col-md-4 hit">'.$this->nom.' frappe '. $jerry->nom.'</div>';
+			echo '<div class="col-md-6 hit">'.$this->nom.' frappe '. $jerry->nom.'</div>';
 
 
 		}
@@ -59,7 +59,7 @@ class Personnage
 		// UNe methode qui 
 		public function afficherExperience(){
 
-			echo '<div class="col-md-4 showexp">' .$this->nom. ' a '.$this->_experience.' dexperience'.'</div>';
+			echo '<div class="col-md-6 showexp">' .$this->nom. ' a '.$this->_experience.' dexperience'.'</div>';
 
 
 		}
@@ -68,7 +68,7 @@ class Personnage
 		public function gagnerExperience() 
 		{
 			$this->_experience++ ;
-			echo '<div class="col-md-4 2 winexp">' .$this->nom. ' a gagner '.$this->_experience. '</div>' ;
+			echo '<div class="col-md-6 2 winexp">' .$this->nom. ' a gagner '.$this->_experience. '</div>' ;
 
 		}
 
@@ -76,14 +76,14 @@ class Personnage
 		public function PrendreDegats() 
 		{
 			$this->_degats = $this->_degats + 1;
-			echo '<div class="col-md-4 takehit">' .$this->nom . ' a prit '.$this->_degats.' de degats'.'</div>'  ;
+			echo '<div class="col-md-6 takehit">' .$this->nom . ' a prit '.$this->_degats.' de degats'.'</div>'  ;
 
 		}
 
 		// Une methode qui signale au user que l'perso2 a eu peur en ce chiant dessu (on affiche un text)
 		public function chier(){
 
-			echo '<div class="col-md-4 bullshit">' .$this->nom. ' a chier '.$this->_chiur.'dessus tellement il a eu peur '.'</div>' ;
+			echo '<div class="col-md-6 bullshit">' .$this->nom. ' a chier '.$this->_chiur.'dessus tellement il a eu peur '.'</div>' ;
 		}
 
 
