@@ -3,31 +3,55 @@
 class Personnage
 
 {
-		private $_force = 50;            // La force du personnage, par défaut à 50.
+
+		private $force  ;            // La force du personnage, par défaut à 50.
 		private $_localisation = 'Lyon'; // Sa localisation, par défaut à Lyon.
 		private $_experience = 1;        // Son expérience, par défaut à 1.
-		private $_degats = 0;            // Ses dégâts, par défaut à 0.
-		private $_chiur = '10 litres de merde'; // comment il chie par default
-		private $_Nom1 = 'tom';
+		private $_degats ;            // Ses dégâts, par défaut à 0.
+		private $_chiur = '10 litres de merde '; // comment il chie par default
+		public 	$nom ;
 
-		public function Nommer(){
+		
+		
+		
+			public function __construct($nom, $force) // Constructeur demandant 2 paramètres
+			{
+				$this->nom = $nom;
+				$this->getForce($force) ; // Initialisation de la force.
+				
+			}
 
-			$this->_Nom1;
-
-		}
 
 		// ici on declare un fonction pour faire parler notre personnage en affichant du text
-		public function parler() 
-		{
+		public function parler() {
 				
-			echo  'je vais te decoupé sale heretik!' ;	
+			echo '<div class="col-md-6 talk"> '.$this->nom .' dit : je vais te decoupé sale heretik!'.'</div>' ;	
 		}
 
-		// Une méthode qui frappera un personnage (suivant la force qu'il a).
-		public function frapper($perso2){ 
+		public function getForce($force){
 
-			$perso2->_degats += $this->_force; 
-			echo '<br /> '.$perso1.' frappe le perso2  ';
+			if(!is_int($force)){
+				trigger_error('La force d\'un personnage doit être un nombre entier', E_USER_WARNING) ;
+				return;
+				}
+				if ($force > 100) // On vérifie bien qu'on ne souhaite pas assigner une valeur supérieure à 100.
+				{
+				trigger_error('La force d\'un personnage ne peut dépasser 100', E_USER_WARNING);
+				return;
+				}
+
+
+				 $this->force = $force;
+				  
+			}
+
+		
+
+		// Une méthode qui frappera un personnage (suivant la force qu'il a).
+		public function frapper($jerry){ 
+
+			$this->_degats += $this->force; 
+			echo '<div class="col-md-4 hit">'.$this->nom.' frappe '. $jerry->nom.'</div>';
 
 
 		}
@@ -35,22 +59,31 @@ class Personnage
 		// UNe methode qui 
 		public function afficherExperience(){
 
-			echo '<br /> $perso1 a '.$this->_experience.' dexperience';
+			echo '<div class="col-md-4 showexp">' .$this->nom. ' a '.$this->_experience.' dexperience'.'</div>';
+
 
 		}
 		
 		// Une méthode augmentant l'attribut $experience du personnage.
 		public function gagnerExperience() 
 		{
-			$this->_experience = $this->_experience + 1;
-			echo '<br/> $perso1 a gagner '.$this->_experience ;
+			$this->_experience++ ;
+			echo '<div class="col-md-4 2 winexp">' .$this->nom. ' a gagner '.$this->_experience. '</div>' ;
+
+		}
+
+		// Une méthode augmentant l'attribut $experience du personnage.
+		public function PrendreDegats() 
+		{
+			$this->_degats = $this->_degats + 1;
+			echo '<div class="col-md-4 takehit">' .$this->nom . ' a prit '.$this->_degats.' de degats'.'</div>'  ;
 
 		}
 
 		// Une methode qui signale au user que l'perso2 a eu peur en ce chiant dessu (on affiche un text)
 		public function chier(){
 
-			echo '<br/> $perso2 a chier '.$this->_chiur.'dessus tellement il a eu peur ' ;
+			echo '<div class="col-md-4 bullshit">' .$this->nom. ' a chier '.$this->_chiur.'dessus tellement il a eu peur '.'</div>' ;
 		}
 
 
@@ -59,16 +92,13 @@ class Personnage
 		public function deplacer(){ 
 		
 		}
+			
+
 }
 
-$perso1 = new Personnage;
-$perso2 = new Personnage;
 
 
-$perso1->parler();
-$perso1->frapper($perso2);
-$perso1->afficherExperience();
-$perso1->gagnerExperience();
-$perso2->chier();
+
+
 
 ?>
