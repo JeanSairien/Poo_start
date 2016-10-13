@@ -1,8 +1,11 @@
 
 <?php
+require 'db/Dbsingleton.php';
 require 'head.php';
 require 'class/Personnage.php'; // J'inclus la classe 
 require 'class/Compteur.php';// J'inclus la classe  du compteur
+
+
 
 		$tom = new Personnage("Tom");
 		$jerry = new Personnage("Jerry");

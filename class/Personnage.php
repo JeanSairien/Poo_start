@@ -3,7 +3,7 @@
 class Personnage
 
 {
-
+		private $id ;//ici on definit la proprieté "id" pour la base de données
 		private $force  ;            // La force du personnage, par défaut à 50.
 		private $_localisation = 'Lyon'; // Sa localisation, par défaut à Lyon.
 		private $_experience = 1;        // Son expérience, par défaut à 1.
