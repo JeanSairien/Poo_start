@@ -1,7 +1,9 @@
 <?php
-namespace Entity;
 
-class DbSingleton {
+
+class DbSingleton 
+        
+        {
         private $_connection;
         private static $_instance; //The single instance
 
@@ -9,6 +11,8 @@ class DbSingleton {
         private $_username = "red";
         private $_password = "admin";
         private $_database = "wargamephp";
+        
+                   
         /*
         Get an instance of the Database
         @return Instance

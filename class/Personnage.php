@@ -4,12 +4,17 @@ class Personnage
 
 {
 		private $id ;//ici on definit la proprieté "id" pour la base de données
-		private $force  ;            // La force du personnage, par défaut à 50.
-		private $_localisation = 'Lyon'; // Sa localisation, par défaut à Lyon.
-		private $_experience = 1;        // Son expérience, par défaut à 1.
-		private $_degats ;            // Ses dégâts, par défaut à 0.
-		private $_chiur = '10 litres de merde '; // comment il chie par default
 		public 	$nom ;
+		//son nom
+		private $force  ;
+		// La force du personnage, par défaut à 50.
+		private $_degats;
+		//les degats recu, par default a 0
+  		private $_niveau;
+  		//Le niveau du personnage, par default a 10
+		private $_exp;        
+		// Son expérience, par défaut à 1.
+		private $_chiur = '10 litres de merde '; // comment il chie par default
 
 		
 		
@@ -59,7 +64,7 @@ class Personnage
 		// UNe methode qui 
 		public function afficherExperience(){
 
-			echo '<div class="col-md-6 showexp">' .$this->nom. ' a '.$this->_experience.' dexperience'.'</div>';
+			echo '<div class="col-md-6 showexp">' .$this->nom. ' a '.$this->_exp.' dexperience'.'</div>';
 
 
 		}
@@ -67,8 +72,8 @@ class Personnage
 		// Une méthode augmentant l'attribut $experience du personnage.
 		public function gagnerExperience() 
 		{
-			$this->_experience++ ;
-			echo '<div class="col-md-6 2 winexp">' .$this->nom. ' a gagner '.$this->_experience. '</div>' ;
+			$this->_exp++ ;
+			echo '<div class="col-md-6 2 winexp">' .$this->nom. ' a gagner '.$this->_exp. '</div>' ;
 
 		}
 

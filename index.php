@@ -5,11 +5,10 @@ require 'head.php';
 require 'class/Personnage.php'; // J'inclus la classe 
 require 'class/Compteur.php';// J'inclus la classe  du compteur
 
-
-
 		$tom = new Personnage("Tom");
 		$jerry = new Personnage("Jerry");
-		
+		$dbh = Dbsingleton::getInstance()->getConnection();
+		var_dump($dbh);
 
 
 ?>
@@ -26,8 +25,10 @@ require 'class/Compteur.php';// J'inclus la classe  du compteur
 			$tom->gagnerExperience();
 			$jerry->PrendreDegats();
 			$jerry->chier();
-		?>	
+			
 
+
+?>
 
 </section>
 <center>		
@@ -43,13 +44,17 @@ require 'class/Compteur.php';// J'inclus la classe  du compteur
                     
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
+
 </center>
 
 
 </div>
 
+
+
 </body>
 </html>
+
 
  
 
