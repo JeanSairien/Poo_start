@@ -1,109 +1,217 @@
-<?php 
+<?php
 
 class Personnage
 
 {
-		private $id ;//ici on definit la proprieté "id" pour la base de données
-		public 	$nom ;
-		//son nom
-		private $force  ;
-		// La force du personnage, par défaut à 50.
-		private $_degats;
-		//les degats recu, par default a 0
-  		private $_niveau;
-  		//Le niveau du personnage, par default a 10
-		private $_exp;        
-		// Son expérience, par défaut à 1.
-		private $_chiur = '10 litres de merde '; // comment il chie par default
 
-		
-		
-		
-			public function __construct($nom, $force) // Constructeur demandant 2 paramètres
-			{
-				$this->nom = $nom;
-				$this->getForce($force) ; // Initialisation de la force.
-				
-			}
+  private $_id;
 
+  private $_name;
 
-		// ici on declare un fonction pour faire parler notre personnage en affichant du text
-		public function parler() {
-				
-			echo '<div class="col-md-6 talk"> '.$this->nom .' dit : je vais te decoupé sale heretik!'.'</div>' ;	
-		}
+  private $_force;
 
-		public function getForce($force){
+  private $_degats;
 
-			if(!is_int($force)){
-				trigger_error('La force d\'un personnage doit être un nombre entier', E_USER_WARNING) ;
-				return;
-				}
-				if ($force > 100) // On vérifie bien qu'on ne souhaite pas assigner une valeur supérieure à 100.
-				{
-				trigger_error('La force d\'un personnage ne peut dépasser 100', E_USER_WARNING);
-				return;
-				}
+  private $_niveau;
 
+  private $_exp;
 
-				 $this->force = $force;
-				  
-			}
+  
 
-		
+  // Liste des getters
 
-		// Une méthode qui frappera un personnage (suivant la force qu'il a).
-		public function frapper($jerry){ 
+  
 
-			$this->_degats += $this->force; 
-			echo '<div class="col-md-6 hit">'.$this->nom.' frappe '. $jerry->nom.'</div>';
+  public function id()
 
+  {
 
-		}
+    return $this->_id;
 
-		// UNe methode qui 
-		public function afficherExperience(){
+  }
 
-			echo '<div class="col-md-6 showexp">' .$this->nom. ' a '.$this->_exp.' dexperience'.'</div>';
+  
 
+  public function nom()
 
-		}
-		
-		// Une méthode augmentant l'attribut $experience du personnage.
-		public function gagnerExperience() 
-		{
-			$this->_exp++ ;
-			echo '<div class="col-md-6 2 winexp">' .$this->nom. ' a gagner '.$this->_exp. '</div>' ;
+  {
 
-		}
+    return $this->_name;
 
-		// Une méthode augmentant l'attribut $experience du personnage.
-		public function PrendreDegats() 
-		{
-			$this->_degats = $this->_degats + 1;
-			echo '<div class="col-md-6 takehit">' .$this->nom . ' a prit '.$this->_degats.' de degats'.'</div>'  ;
+  }
 
-		}
+  
 
-		// Une methode qui signale au user que l'perso2 a eu peur en ce chiant dessu (on affiche un text)
-		public function chier(){
+  public function force()
 
-			echo '<div class="col-md-6 bullshit">' .$this->nom. ' a chier '.$this->_chiur.'dessus tellement il a eu peur '.'</div>' ;
-		}
+  {
 
+    return $this->_force;
 
+  }
 
-		// Une méthode qui déplacera le personnage (modifiera sa localisation).
-		public function deplacer(){ 
-		
-		}
-			
+  
+
+  public function degats()
+
+  {
+
+    return $this->_degats;
+
+  }
+
+  
+
+  public function niveau()
+
+  {
+
+    return $this->_niveau;
+
+  }
+
+  
+
+  public function exp()
+
+  {
+
+    return $this->_exp;
+
+  }
+
+  
+
+  // Liste des setters
+
+  
+
+  public function setId($id)
+
+  {
+
+    // On convertit l'argument en nombre entier.
+
+    // Si c'en était déjà un, rien ne changera.
+
+    // Sinon, la conversion donnera le nombre 0 (à quelques exceptions près, mais rien d'important ici).
+
+    $id = (int) $id;
+
+    
+
+    // On vérifie ensuite si ce nombre est bien strictement positif.
+
+    if ($id > 0)
+
+    {
+
+      // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
+
+      $this->_id = $id;
+
+    }
+
+  }
+
+  
+
+  public function setNom($nom)
+
+  {
+
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+
+    if (is_string($nom))
+
+    {
+
+      $this->_nom = $nom;
+
+    }
+
+  }
+
+  
+
+  public function setForcePerso($force)
+
+  {
+
+    $force = (int) $force;
+
+    
+
+    if ($force >= 1 && $force <= 100)
+
+    {
+
+      $this->_force = $force;
+
+    }
+
+  }
+
+  
+
+  public function setDegats($degats)
+
+  {
+
+    $degats = (int) $degats;
+
+    
+
+    if ($degats >= 0 && $degats <= 100)
+
+    {
+
+      $this->_degats = $degats;
+
+    }
+
+  }
+
+  
+
+  public function setNiveau($niveau)
+
+  {
+
+    $niveau = (int) $niveau;
+
+    
+
+    if ($niveau >= 1 && $niveau <= 100)
+
+    {
+
+      $this->_niveau = $niveau;
+
+    }
+
+  }
+
+  
+
+  public function setexp($exp)
+
+  {
+
+    $exp = (int) $exp;
+
+    
+
+    if ($exp >= 1 && $exp <= 100)
+
+    {
+
+      $this->_exp = $exp;
+
+    }
+
+  }
 
 }
-
-
-
-
-
 
 ?>
